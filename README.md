@@ -1,5 +1,5 @@
 # Trabalho-Final-AEDS-II
-Um trabalho a respeito das Conexões entre artistas por meio de suas parcerias e colaborações musicais.
+Um trabalho a respeito das Conexões entre artistas por meio de suas parcerias e colaborações musicais. Feito em Python.
 
 O ranking de artistas mais reproduzidos no Spotify foi obtido nesse link:
 https://chartmasters.org/most-streamed-artists-ever-on-spotify/
@@ -10,3 +10,16 @@ O servidor API do Spotify possui um limite de requisições, portanto no exemplo
 
 O CSV usado na implementação que encontra o dataframe que é usado para aplicação do algoritmo de grafos, inicialmente para testes, foi uma junção dos 50 artistas mais reproduzidos.
 Foram colocadas delimitações padronizadas no arquivo CSV para facilitar na execução do código.
+
+# Arquivos 'dataset'
+
+- pasta 'csvspotify': pasta com os arquivos csvs isolados de cada artista.
+- artistas.txt : arquivo usado na extração de dados dos artistas. pela limitação de acesso ao servidor, a cada execução do código peguei partes de 30 artistas.
+- Top250Artists.txt : arquivo contendo todos os artistas do ranking que considerei a partir da data de acesso do site.
+- extrairdados.py : arquivo para extrair os dados da API do spotify e retornar cada csv separadamente.
+- full.csv : arquivo usado pra montar o dataframe na pasta src.
+- outputdataframe.csv : arquivo de resultado da execução do dataframe.
+
+# Arquivos 'src'
+
+- dataframe.py : arquivo que pega o csv com os artistas e suas listas de música e transforma em dataframe que será utilizado na montagem do grafo.
