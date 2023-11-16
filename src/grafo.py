@@ -1,6 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from separando import df_artistas
+from dataframe import df_artistas
 
 # Cria um grafo direcionado
 G = nx.DiGraph()
@@ -25,7 +25,7 @@ for _, row in df_artistas.iterrows():
 
 newit = 1
 
-with open('outputgrafo.txt', 'w', encoding='utf-8') as newfile:
+with open('dataset/outputgrafo.txt', 'w', encoding='utf-8') as newfile:
     for u, v, data in G.edges(data=True):
         newfile.write(f'{newit} - Aresta entre artistas "{u}" e "{v}", Música: "{data["musica"]}"\n')
         print(f'{newit} - Aresta entre artistas "{u}" e "{v}", Música: "{data["musica"]}"')
