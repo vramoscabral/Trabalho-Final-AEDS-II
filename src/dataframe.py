@@ -9,7 +9,7 @@ import pandas as pd
 #- fimartista; fim da lista de músicas do artista, que será colocada na outra coluna do dataframe
 # cada linha tem duas colunas, a coluna do nome do artista e a outra a coluna da lista de músicas
 
-main_arch = 'full.csv'
+main_arch = 'dataset/full.csv'
 # Criar um DataFrame vazio para artistas
 df_artistas = pd.DataFrame(columns=['nome', 'musicas'])
 
