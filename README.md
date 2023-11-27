@@ -9,8 +9,10 @@ Foi colocado o txt com os Top 250 artistas, mas vale lembrar a quem quiser repro
 O servidor API do Spotify possui um limite de requisições, portanto no exemplo dessa implementação, o usuário consegue obter dados de no máximo 70 artistas por conta.
 Alguns artistas não serão usados na parte do grafo por não possuírem músicas em colaboração com outros artistas.
 
-O CSV usado na implementação que encontra o dataframe que é usado para aplicação do algoritmo de grafos, inicialmente para testes, foi uma junção dos 50 artistas mais reproduzidos.
+O CSV usado na implementação que encontra o dataframe que é usado para aplicação do algoritmo de grafos, foi uma junção dos 100 artistas mais reproduzidos.
 Foram colocadas delimitações padronizadas no arquivo CSV para facilitar na execução do código.
+
+Para testar o programa, basta executar o arquivo grafo.py, e garanta que o arquivo dataframe.py esteja na mesma pasta e que o full.csv esteja no endereço certo para o dataframe.py identificar.
 
 # Arquivos 'dataset'
 
@@ -24,3 +26,4 @@ Foram colocadas delimitações padronizadas no arquivo CSV para facilitar na exe
 # Arquivos 'src'
 
 - dataframe.py : arquivo que pega o csv com os artistas e suas listas de música e transforma em dataframe que será utilizado na montagem do grafo.
+- grafo.py: pega o dataframe e constrói o grafo, e apresenta os cliques e top 10 artistas que tiveram mais colaborações.
