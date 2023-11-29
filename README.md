@@ -12,7 +12,7 @@ Alguns artistas não serão usados na parte do grafo por não possuírem música
 O CSV usado na implementação que encontra o dataframe que é usado para aplicação do algoritmo de grafos, foi uma junção dos 100 artistas mais reproduzidos.
 Foram colocadas delimitações padronizadas no arquivo CSV para facilitar na execução do código.
 
-Para testar o programa, basta executar o arquivo grafo.py, e garanta que o arquivo dataframe.py esteja na mesma pasta e que o full.csv esteja no endereço certo para o dataframe.py identificar.
+Para testar o programa, basta executar o arquivo grafo.py e garanta que o arquivo dataframe.py esteja na mesma pasta, também garanta que o full.csv esteja no endereço certo para o dataframe.py identificar.
 
 # Arquivos 'dataset'
 
@@ -20,7 +20,7 @@ Para testar o programa, basta executar o arquivo grafo.py, e garanta que o arqui
 - artistas.txt : arquivo usado na extração de dados dos artistas. pela limitação de acesso ao servidor, a cada execução do código peguei partes de 30 artistas.
 - Top250Artists.txt : arquivo contendo todos os artistas do ranking que considerei a partir da data de acesso do site.
 - extrairdados.py : arquivo para extrair os dados da API do spotify e retornar cada csv separadamente.
-- full.csv : arquivo usado pra montar o dataframe na pasta src.
+- full.csv : arquivo usado pra montar o dataframe a ser executado em src/dataframe.py, full100.csv e full150.csv tem o mesmo propósito, porém quantidade de artistas diferentes.
 - outputdataframe.csv : arquivo de resultado da execução do dataframe.
 
 # Arquivos 'src'
