@@ -15,7 +15,7 @@ for _, row in df_artistas.iterrows():
     nome_artista = row['nome'].strip()
     for musica in row['musicas']:
         # Ajuste o nome da música para evitar caracteres especiais
-        nome_musica = musica['nome'].replace('$', 's').replace('(', '').replace(')', '').replace('.', '').replace(',', '')
+        nome_musica = musica['nome'].replace('$', 's').replace('(', '').replace(')', '').replace('.', '').replace(',', '').replace('\'', '')
         for artista_2 in musica['artistas']:
             artista_2 = artista_2.strip()
             if artista_2 != nome_artista:
@@ -42,42 +42,43 @@ with open('outputgrafo.txt', 'w', encoding='utf-8') as newfile:
 pos = nx.spring_layout(G)
 nx.draw(G, pos, with_labels=True, font_size=8, node_size=700, font_color='black', font_weight='bold', arrowsize=10)
 
-# Adiciona os rótulos das arestas (contagem de ocorrências de músicas)
-edge_labels = {(u, v): data['musica'] for u, v, data in G.edges(data=True) if 'musica' in data}
-nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red', label_pos=0.5, font_size=6)
-
 # Encontrar cliques de peso máximo no grafo não direcionado
 G_undirected = G.to_undirected()
 cliques = list(nx.find_cliques(G_undirected))
 
-# Filtrar cliques onde existem arestas entre todos os artistas
+# Filtrar cliques válidos (onde existem arestas entre todos os artistas)
 cliques_validos = [
-    (x, sum(G[u][v].get('musica', 0) for u, v in zip(x, x[1:])))
-    for x in cliques
-    if all(G.has_edge(u, v) for u, v in zip(x, x[1:]))
+    clique
+    for clique in cliques
+    if all(G_undirected.has_edge(u, v) for u, v in zip(clique, clique[1:]))
 ]
 
-# Classificar os cliques válidos com base na soma total de músicas em ordem decrescente
-cliques_ordenados = sorted(cliques_validos, key=lambda x: x[1], reverse=True)
+# Classificar os cliques válidos com base no número de vértices em ordem decrescente
+cliques_ordenados_por_vertices = sorted(cliques_validos, key=lambda x: len(x), reverse=True)
 
-# Imprimir os 10 cliques de maior valor
-for i, (clique, soma) in enumerate(cliques_ordenados[:10], start=1):
-    print(f'{i}. Clique: {clique}, Soma total: {soma}')
+with open('outputclique.txt', 'w', encoding='utf-8') as newfile:
 
-    # Imprimir o peso de cada aresta no clique
-    for u, v in zip(clique, clique[1:]):
-        peso_aresta = G[u][v].get('musica', 0)
-        print(f'   Aresta entre artistas "{u}" e "{v}", Peso: {peso_aresta}')
+    # Imprimir os 10 cliques com mais vértices e todas as arestas entre eles
+    for i, clique in enumerate(cliques_ordenados_por_vertices[:10], start=1):
+        print(f'{i}. Clique: {clique}, Número de vértices: {len(clique)}')
+        newfile.write(f'{i}. Clique: {clique}, Número de vértices: {len(clique)}\n')
+
+        # Imprimir o peso de cada aresta no clique
+        for u in clique:
+            for v in clique:
+                if u != v:
+                    peso_aresta = G_undirected[u][v].get('musica', 0)
+                    newfile.write(f'   Aresta entre artistas "{u}" e "{v}", Peso: {peso_aresta}\n')
 
 # Exibir os cliques de maior valor
-print(f'Total de cliques: {len(cliques_validos)}')
+print(f'\nTotal de cliques válidos: {len(cliques_ordenados_por_vertices)}')
 
 # Obter as 20 maiores arestas com base no peso
 maiores_arestas = sorted(G.edges(data=True), key=lambda x: x[2].get('musica', 0), reverse=True)[:20]
 
 newit = 1
 
-print('Maiores contribuições entre 2 artistas:\n')
+print('\nMaiores contribuições entre 2 artistas:\n')
 # Imprimir as 20 maiores arestas
 for newit, (u, v, data) in enumerate(maiores_arestas, start=1):
     peso_aresta = data.get('musica', 0)
