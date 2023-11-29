@@ -26,4 +26,4 @@ Para testar o programa, basta executar o arquivo grafo.py, e garanta que o arqui
 # Arquivos 'src'
 
 - dataframe.py : arquivo que pega o csv com os artistas e suas listas de música e transforma em dataframe que será utilizado na montagem do grafo.
-- grafo.py: pega o dataframe e constrói o grafo, e apresenta os cliques e top 10 artistas que tiveram mais colaborações.
+- grafo.py: pega o dataframe e constrói o grafo, e apresenta os cliques de maior quantidade de vértices e top 20 maiores colaborações entre 2 artistas.
