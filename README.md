@@ -12,7 +12,7 @@ Alguns artistas não serão usados na parte do grafo por não possuírem música
 O CSV usado na implementação que encontra o dataframe que é usado para aplicação do algoritmo de grafos, foi uma junção dos 100 artistas mais reproduzidos.
 Foram colocadas delimitações padronizadas no arquivo CSV para facilitar na execução do código.
 
-Para testar o programa, basta executar o arquivo grafo.py e garanta que os arquivos dataframe.py e full.csv estejam na mesma pasta.
+Para testar o programa, basta executar o arquivo grafo.py e garanta que os arquivos dataframe.py e full.csv estejam na mesma pasta. No dataset tem 3 arquivos full csv (de 50, 100 e 150), o full.csv que está na pasta src é o que foi utilizado nos resultados do artigo.
 
 # Arquivos 'dataset'
 
