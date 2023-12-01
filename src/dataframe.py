@@ -9,7 +9,7 @@ import pandas as pd
 #- fimartista; fim da lista de músicas do artista, que será colocada na outra coluna do dataframe
 # cada linha tem duas colunas, a coluna do nome do artista e a outra a coluna da lista de músicas
 
-main_arch = 'dataset/full.csv'
+main_arch = 'full.csv'
 # Criar um DataFrame vazio para artistas
 df_artistas = pd.DataFrame(columns=['nome', 'musicas'])
 
@@ -74,7 +74,7 @@ print("\nDataFrame de Artistas (após inserção):")
 print(df_artistas)
 
 # Caminho para o arquivo CSV de saída
-caminho_saida = 'dataset/outputdataframe.csv'
+caminho_saida = 'outputdataframe.csv'
 
 # Salva o DataFrame em um arquivo CSV para testar se funcionou.
 df_artistas.to_csv(caminho_saida, index=False, encoding='utf-8')
